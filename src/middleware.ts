@@ -32,7 +32,11 @@ const authConfig = {
   },
 };
 
-export const { auth: middleware } = NextAuth(authConfig);
+const { auth } = NextAuth(authConfig);
+
+export default function middleware(request: any) {
+  return auth(request);
+}
 
 export const config = {
   matcher: ["/admin/:path*"],
