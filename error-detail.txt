@@ -1,0 +1,47 @@
+Message:
+`PrismaClient` needs to be constructed with a non-empty, valid `PrismaClientOptions`:
+
+```
+new PrismaClient({
+  ...
+})
+```
+
+or
+
+```
+constructor() {
+  super({ ... });
+}
+```
+          
+
+Name: PrismaClientInitializationError
+Code: undefined
+Stack:
+PrismaClientInitializationError: `PrismaClient` needs to be constructed with a non-empty, valid `PrismaClientOptions`:
+
+```
+new PrismaClient({
+  ...
+})
+```
+
+or
+
+```
+constructor() {
+  super({ ... });
+}
+```
+          
+    at new t (D:\DEV\focaccia-delivery\src\lib\generated\prisma\runtime\client.js:74:960)
+    at main (D:\DEV\focaccia-delivery\test-db.ts:7:18)
+    at fs (D:\DEV\focaccia-delivery\test-db.ts:14:1)
+    at Object.<anonymous> (D:\DEV\focaccia-delivery\test-db.ts:26:2)
+    at Module._compile (node:internal/modules/cjs/loader:1730:14)
+    at Object.transformer (D:\DEV\focaccia-delivery\node_modules\tsx\dist\register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1465:32)
+    at Function._load (node:internal/modules/cjs/loader:1282:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)

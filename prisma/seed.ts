@@ -2,23 +2,9 @@ import "dotenv/config";
 import { PrismaClient } from "../src/lib/generated/prisma";
 import bcrypt from "bcryptjs";
 
-const dbUrl = process.env.DATABASE_URL || "";
-
-async function createClient() {
-  if (dbUrl.startsWith("file:") || dbUrl === "") {
-    const { PrismaBetterSqlite3 } = await import("@prisma/adapter-better-sqlite3");
-    const adapter = new PrismaBetterSqlite3({ url: dbUrl || "file:./dev.db" });
-    return new PrismaClient({ adapter });
-  } else {
-    const { PrismaNeon } = await import("@prisma/adapter-neon");
-    const adapter = new PrismaNeon({ connectionString: dbUrl });
-    return new PrismaClient({ adapter });
-  }
-}
+const prisma = new PrismaClient();
 
 async function main() {
-  const prisma = await createClient();
-
   console.log("🍕 Seeding Focaccia Delivery...");
 
   // Limpiar datos existentes

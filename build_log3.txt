@@ -1,0 +1,104 @@
+﻿
+> focaccia-delivery@0.1.0 build
+> prisma generate && next build
+
+node.exe : Loaded 
+Prisma config from 
+prisma.config.ts.
+En C:\Program Files\n
+odejs\npm.ps1: 29 
+Carácter: 3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (Loaded    
+ Prisma c...isma.    
+config.ts.:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+
+Prisma schema loaded 
+from 
+prisma\schema.prisma.
+
+Ô£ö Generated Prisma Client (v7.4.2) to .\src\lib\generated\prisma in 4.60s
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env
+
+ÔÜá The "middleware" 
+file convention is 
+deprecated. Please 
+use "proxy" instead. 
+Learn more: https://n
+extjs.org/docs/messag
+es/middleware-to-prox
+y
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 3.3min
+  Running TypeScript ...
+Failed to compile.
+
+./prisma/seed.ts:9:50
+Type error: Cannot 
+find module '@prisma/
+adapter-better-sqlite
+3' or its 
+corresponding type 
+declarations.
+
+[0m [90m  7 |[39m 
+[36masync[39m 
+[36mfunction[39m 
+createClient() {
+ [90m  8 |[39m   
+[36mif[39m (dbUrl[
+33m.[39mstartsWith(
+[32m"file:"[39m) 
+[33m||[39m dbUrl 
+[33m===[39m 
+[32m""[39m) {
+[31m[1m>[22m[39m
+[90m  9 |[39m     
+[36mconst[39m { [3
+3mPrismaBetterSqlite3
+[39m } [33m=[39m 
+[36mawait[39m [36m
+import[39m([32m"@pr
+isma/adapter-better-s
+qlite3"[39m)[33m;[
+39m
+ [90m    |[39m     
+                     
+                     
+   
+[31m[1m^[22m[39m
+ [90m 10 |[39m     
+[36mconst[39m 
+adapter [33m=[39m 
+[36mnew[39m [33mPr
+ismaBetterSqlite3[39
+m({ url[33m:[39m 
+dbUrl [33m||[39m [
+32m"file:./dev.db"[3
+9m })[33m;[39m
+ [90m 11 |[39m     
+[36mreturn[39m 
+[36mnew[39m [33mPr
+ismaClient[39m({ 
+adapter })[33m;[39m
+ [90m 12 |[39m   } 
+[36melse[39m {[0m
+Next.js build worker 
+exited with code: 1 
+and signal: null

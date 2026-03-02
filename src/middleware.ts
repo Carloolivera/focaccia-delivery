@@ -34,9 +34,8 @@ const authConfig = {
 
 const { auth } = NextAuth(authConfig);
 
-export default function middleware(request: any) {
-  return auth(request);
-}
+// Next.js 16 requiere un named export "middleware" que sea una función
+export const middleware = auth;
 
 export const config = {
   matcher: ["/admin/:path*"],

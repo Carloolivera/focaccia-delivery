@@ -1,0 +1,140 @@
+﻿
+> focaccia-delivery@0.1.0 build
+> prisma generate && next build
+
+node.exe : Loaded 
+Prisma config from 
+prisma.config.ts.
+En C:\Program Files\n
+odejs\npm.ps1: 29 
+Carácter: 3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (Loaded    
+ Prisma c...isma.    
+config.ts.:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+
+Prisma schema loaded 
+from 
+prisma\schema.prisma.
+
+Ô£ö Generated Prisma Client (v7.4.2) to .\src\lib\generated\prisma in 460ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env
+
+ÔÜá The "middleware" 
+file convention is 
+deprecated. Please 
+use "proxy" instead. 
+Learn more: https://n
+extjs.org/docs/messag
+es/middleware-to-prox
+y
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 4.9s
+  Running TypeScript ...
+  Collecting page data using 15 workers ...
+Error: Failed to 
+collect 
+configuration for 
+/menu
+    at ignore-listed 
+frames {
+  [cause]: Error [Pri
+smaClientConstructorV
+alidationError]: 
+Using engine type 
+"client" requires 
+either "adapter" or 
+"accelerateUrl" to 
+be provided to 
+PrismaClient 
+constructor.
+  Read more at https:
+//pris.ly/d/client-co
+nstructor
+      at <unknown> (D
+:\DEV\focaccia-delive
+ry\.next\server\chunk
+s\ssr\_49e115f8._.js:
+67:2374)
+      at new b (D:\DE
+V\focaccia-delivery\.
+next\server\chunks\ss
+r\_49e115f8._.js:67:2
+500)
+      at module 
+evaluation (D:\DEV\fo
+caccia-delivery\.next
+\server\chunks\ssr\_4
+9e115f8._.js:74:49269
+29)
+      at 
+instantiateModule (D:
+\DEV\focaccia-deliver
+y\.next\server\chunks
+\ssr\[turbopack]_runt
+ime.js:740:9)
+      at getOrInstant
+iateModuleFromParent 
+(D:\DEV\focaccia-deli
+very\.next\server\chu
+nks\ssr\[turbopack]_r
+untime.js:763:12)
+      at 
+Context.esmImport 
+[as i] (D:\DEV\focacc
+ia-delivery\.next\ser
+ver\chunks\ssr\[turbo
+pack]_runtime.js:228:
+20)
+      at module 
+evaluation (D:\DEV\fo
+caccia-delivery\.next
+\server\chunks\ssr\[r
+oot-of-the-server]__d
+804b8c4._.js:2:326)
+      at 
+instantiateModule (D:
+\DEV\focaccia-deliver
+y\.next\server\chunks
+\ssr\[turbopack]_runt
+ime.js:740:9)
+      at getOrInstant
+iateModuleFromParent 
+(D:\DEV\focaccia-deli
+very\.next\server\chu
+nks\ssr\[turbopack]_r
+untime.js:763:12)
+      at 
+Context.esmImport 
+[as i] (D:\DEV\focacc
+ia-delivery\.next\ser
+ver\chunks\ssr\[turbo
+pack]_runtime.js:228:
+20)
+}
+
+> Build error 
+occurred
+Error: Failed to 
+collect page data 
+for /menu
+    at ignore-listed 
+frames {
+  type: 'Error'
+}
