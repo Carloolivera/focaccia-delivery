@@ -1,0 +1,89 @@
+﻿
+> focaccia-delivery@0.1.0 build
+> prisma generate && next build
+
+node.exe : Loaded 
+Prisma config from 
+prisma.config.ts.
+En C:\Program Files\n
+odejs\npm.ps1: 29 
+Carácter: 3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (Loaded    
+ Prisma c...isma.    
+config.ts.:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+
+Prisma schema loaded 
+from 
+prisma\schema.prisma.
+
+Ô£ö Generated Prisma Client (v7.4.2) to .\src\lib\generated\prisma in 90ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env
+
+ÔÜá The "middleware" 
+file convention is 
+deprecated. Please 
+use "proxy" instead. 
+Learn more: https://n
+extjs.org/docs/messag
+es/middleware-to-prox
+y
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 2.9s
+  Running TypeScript ...
+Failed to compile.
+
+./src/lib/db.ts:30:19
+Type error: Expected 
+2 arguments, but got 
+1.
+
+[0m [90m 28 |[39m 
+  [90m// 
+Producci├│n: Neon 
+PostgreSQL via HTTP 
+(sin WebSocket, 
+serverless-safe)[39m
+ [90m 29 |[39m   
+[36mconst[39m sql 
+[33m=[39m neon(dbUr
+l)[33m;[39m
+[31m[1m>[22m[39m
+[90m 30 |[39m   
+[36mconst[39m 
+adapter [33m=[39m 
+[36mnew[39m [33mPr
+ismaNeonHttp[39m(sql
+)[33m;[39m
+ [90m    |[39m     
+              
+[31m[1m^[22m[39m
+ [90m 31 |[39m   
+[36mreturn[39m 
+[36mnew[39m [33mPr
+ismaClient[39m({ 
+adapter[33m,[39m 
+log[33m:[39m 
+[[32m"error"[39m] 
+})[33m;[39m
+ [90m 32 |[39m }
+ [90m 33 |[39m[0m
+Next.js build worker 
+exited with code: 1 
+and signal: null
