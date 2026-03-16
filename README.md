@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Focaccia Delivery
 
-## Getting Started
+Sistema de pedidos online para pizzería. Menú interactivo, carrito persistente, panel admin y notificación por WhatsApp.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Stack
+
+| Capa | Tecnología |
+|------|-----------|
+| Framework | Next.js 16 (App Router) |
+| UI | React 19 + Tailwind CSS v4 + shadcn/ui |
+| Base de datos | PostgreSQL (Neon serverless) |
+| ORM | Prisma 7 (Driver Adapter) |
+| Auth | NextAuth v5 (admin) |
+| Estado | Zustand 5 (carrito) |
+| Deploy | Vercel |
+
+## Features
+
+- **Menú interactivo** — categorías, productos con imagen, descripción y precio
+- **Carrito persistente** — Zustand con estado local, agregar/quitar items
+- **Checkout** — delivery o retiro en local, datos del cliente
+- **Notificación WhatsApp** — genera link con el pedido formateado para el negocio
+- **Panel admin** — gestión de menú, pedidos, configuración del negocio
+- **Auth admin** — login con credenciales, protección de rutas
+- **Dark mode** — toggle de tema
+- **Responsive** — adaptado a mobile
+
+## Páginas
+
+```
+Públicas:
+  /              → Landing
+  /menu          → Menú interactivo con carrito
+  /pedido        → Checkout (datos + envío)
+  /confirmado    → Confirmación del pedido
+
+Admin:
+  /login         → Acceso admin
+  /admin         → Dashboard
+  /admin/menu    → CRUD de categorías y productos
+  /admin/pedidos → Gestión de pedidos
+  /admin/config  → Configuración del negocio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Quick Start
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+git clone https://github.com/Carloolivera/focaccia-delivery.git
+cd focaccia-delivery
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Crear `.env`:
 
-## Learn More
+```env
+DATABASE_URL="postgresql://..."
+AUTH_SECRET="..."
+NEXTAUTH_URL="http://localhost:3000"
+```
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npx prisma db push
+npx prisma db seed
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Modelo de datos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+Category    → categorías del menú (pizzas, empanadas, etc.)
+Product     → productos con precio, imagen, stock
+Order       → pedidos (delivery/pickup) con estado
+OrderItem   → items de cada pedido
+Settings    → nombre del negocio, WhatsApp, horarios
+AdminUser   → credenciales del admin
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Desarrollado por [AIDO Digital Agency](https://aidoagencia.com) · Chascomús, Buenos Aires
