@@ -1,3 +1,5 @@
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 import { getSettings } from "@/actions/menu";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ToggleOpen } from "@/components/admin/toggle-open";
@@ -6,6 +8,9 @@ import { MapPin, Phone, Clock, Instagram, Truck, Store } from "lucide-react";
 export const dynamic = "force-dynamic";
 
 export default async function ConfigPage() {
+  const session = await auth();
+  if (!session?.user) redirect("/login");
+
   const settings = await getSettings();
 
   return (

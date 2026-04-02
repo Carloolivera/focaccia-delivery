@@ -1,47 +1,50 @@
 "use server";
 
+import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 
-interface CreateOrderInput {
-  type: "DELIVERY" | "PICKUP";
-  customerName: string;
-  customerPhone: string;
-  address?: string;
-  addressNote?: string;
-  notes?: string;
-  items: {
-    productId: string;
-    quantity: number;
-    price: number;
-  }[];
-}
+const CreateOrderSchema = z.object({
+  type: z.enum(["DELIVERY", "PICKUP"]),
+  customerName: z.string().min(2).max(100),
+  customerPhone: z.string().regex(/^\d{7,15}$/, "Teléfono inválido"),
+  address: z.string().max(500).optional(),
+  addressNote: z.string().max(300).optional(),
+  notes: z.string().max(500).optional(),
+  items: z
+    .array(
+      z.object({
+        productId: z.string().cuid(),
+        quantity: z.number().int().min(1).max(100),
+        price: z.number().positive(),
+      })
+    )
+    .min(1),
+});
 
-export async function createOrder(input: CreateOrderInput) {
-  const total = input.items.reduce(
+export async function createOrder(input: z.infer<typeof CreateOrderSchema>) {
+  const parsed = CreateOrderSchema.safeParse(input);
+  if (!parsed.success) {
+    throw new Error(parsed.error.issues[0].message);
+  }
+
+  const data = parsed.data;
+  const total = data.items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
 
-  // Obtener el último número de pedido
-  const lastOrder = await prisma.order.findFirst({
-    orderBy: { orderNumber: "desc" },
-    select: { orderNumber: true },
-  });
-  const nextNumber = (lastOrder?.orderNumber || 0) + 1;
-
   const order = await prisma.order.create({
     data: {
-      orderNumber: nextNumber,
-      type: input.type,
-      customerName: input.customerName,
-      customerPhone: input.customerPhone,
-      address: input.address,
-      addressNote: input.addressNote,
-      notes: input.notes,
+      type: data.type,
+      customerName: data.customerName,
+      customerPhone: data.customerPhone,
+      address: data.address,
+      addressNote: data.addressNote,
+      notes: data.notes,
       total,
       items: {
-        create: input.items.map((item) => ({
+        create: data.items.map((item) => ({
           productId: item.productId,
           quantity: item.quantity,
           price: item.price,

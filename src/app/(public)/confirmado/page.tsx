@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, MessageCircle, ArrowLeft } from "lucide-react";
 import { formatPrice, generateClientWhatsAppLink } from "@/lib/whatsapp";
+import { getSettings } from "@/actions/menu";
 
 interface ConfirmadoPageProps {
   searchParams: Promise<{
@@ -13,14 +14,15 @@ interface ConfirmadoPageProps {
 }
 
 export default async function ConfirmadoPage({ searchParams }: ConfirmadoPageProps) {
-  const params = await searchParams;
+  const [params, settings] = await Promise.all([searchParams, getSettings()]);
   const orderNumber = params.order || "---";
   const customerName = params.name ? decodeURIComponent(params.name) : "Cliente";
   const total = params.total ? parseFloat(params.total) : 0;
   const type = params.type || "DELIVERY";
+  const phone = settings?.phone1 ?? "2241693947";
 
   const whatsappLink = generateClientWhatsAppLink(
-    "2241693947",
+    phone,
     parseInt(orderNumber) || 0,
     customerName,
     total
@@ -102,8 +104,8 @@ export default async function ConfirmadoPage({ searchParams }: ConfirmadoPagePro
 
       <p className="text-xs text-muted-foreground pt-4">
         ¿Problemas con tu pedido? Llamanos al{" "}
-        <a href="tel:2241693947" className="text-[var(--focaccia-orange)] font-medium">
-          2241 693 947
+        <a href={`tel:${phone}`} className="text-[var(--focaccia-orange)] font-medium">
+          {phone}
         </a>
       </p>
     </div>

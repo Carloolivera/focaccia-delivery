@@ -1,3 +1,5 @@
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 import { getCategories } from "@/actions/menu";
 import { formatPrice } from "@/lib/whatsapp";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,6 +8,9 @@ import { Badge } from "@/components/ui/badge";
 export const dynamic = "force-dynamic";
 
 export default async function AdminMenuPage() {
+  const session = await auth();
+  if (!session?.user) redirect("/login");
+
   const categories = await getCategories();
 
   const totalProducts = categories.reduce(

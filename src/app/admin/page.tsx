@@ -1,3 +1,5 @@
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 import { getOrders } from "@/actions/orders";
 import { getSettings } from "@/actions/menu";
 import { formatPrice } from "@/lib/whatsapp";
@@ -10,6 +12,9 @@ import { ToggleOpen } from "@/components/admin/toggle-open";
 export const dynamic = "force-dynamic";
 
 export default async function AdminDashboard() {
+  const session = await auth();
+  if (!session?.user) redirect("/login");
+
   const [orders, settings] = await Promise.all([getOrders(), getSettings()]);
 
   const totalSales = orders

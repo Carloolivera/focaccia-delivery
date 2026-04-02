@@ -31,7 +31,7 @@ model Product {
 
 model Order {
   id            String      @id @default(cuid())
-  orderNumber   Int
+  orderNumber   Int         @default(autoincrement())
   status        String      @default("RECEIVED")
   type          String      // "DELIVERY" | "PICKUP"
   customerName  String
