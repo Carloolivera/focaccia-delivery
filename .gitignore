@@ -47,11 +47,14 @@ next-env.d.ts
 # sqlite dev db
 *.db
 
-.vercel
+# logs and debug files
+*.log
+build_*.txt
+build_final*.txt
+deploy_*.txt
+error*.txt
+vercel_*.log
+test-db*.log
 
-# sensitive files - never commit
-auth_secret.txt
-db_url.txt
-test-db.ts
-build_log.txt
-.env*.local
+# Claude Code
+.claude/
